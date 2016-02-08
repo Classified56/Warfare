@@ -7,6 +7,7 @@ public class WarfareRunner
 	{
 		BoardImage.initializeFieldFrame();
 		BoardImage.makeVisible();
+		
 	}
 
 }

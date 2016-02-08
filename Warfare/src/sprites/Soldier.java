@@ -1,5 +1,7 @@
 package sprites;
 
+import java.util.Date;
+
 /**
  * super class for all the different types of soldiers
  * 
@@ -8,6 +10,7 @@ package sprites;
  */
 public abstract class Soldier extends Sprite
 {
+	public static int number;
 	protected int health;
 	protected int maxHealth;
 	protected String name;
@@ -16,8 +19,9 @@ public abstract class Soldier extends Sprite
 	//damage done when object attacks
 	protected int damage;
 	//reduces damage take if true
-	protected boolean behindBarrier;
+	protected boolean inBarrier;
 	protected boolean isAlive;
+	protected int range;
 	
 	/**
 	 * a move method for all soldiers
@@ -39,10 +43,40 @@ public abstract class Soldier extends Sprite
 				y = 0;
 			position[0] = x;
 			position[1] = y;
+			System.out.println(name + " moved to position (" + x + ", " + y + ")");
 			moves--;
 		}
 		else
-			System.out.println("Invalid move for soldier " + name);
+			System.out.println("Invalid move for " + name);
+	}
+	
+	public void resetMoves()
+	{
+		moves = 2;
+	}
+	
+	public void attack(Soldier x)
+	{
+		int x1 = x.getPosition()[0], y1 = x.getPosition()[0];
+		double distance = Math.hypot((double)x1 - (double)position[0], (double)y1 - (double)position[1]);
+		if(distance <= range && !x.inBarrier)
+		{
+			x.changeHealth(damage);
+			System.out.println(x.name + " was hit. His health is " + x.health);
+		}
+		else
+		{
+			int fred = x.inBarrier ? 1 : 2;
+			boolean accuracy = fred < (Math.random() * 20 + 8) / (distance / range);
+			if(accuracy)
+			{
+				x.changeHealth(damage);
+				System.out.println(x.name + " was hit. His health is " + x.health);
+			}
+			else
+				System.out.println(name + " missed " + x.name);
+		}
+		
 	}
 	
 	public int getDamage()

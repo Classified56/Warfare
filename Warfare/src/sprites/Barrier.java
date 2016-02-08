@@ -1,7 +1,5 @@
 package sprites;
 
-import java.util.ArrayList;
-
 public class Barrier extends Sprite
 {
 	public Barrier(int x, int y)
