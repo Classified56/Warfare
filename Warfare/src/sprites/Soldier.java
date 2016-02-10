@@ -1,5 +1,6 @@
 package sprites;
 
+import board.*;
 import java.util.Date;
 
 /**
@@ -66,8 +67,11 @@ public abstract class Soldier extends Sprite
 		}
 		else
 		{
-			int fred = x.inBarrier ? 1 : 2;
-			boolean accuracy = fred < (Math.random() * 20 + 8) / (distance / range);
+			int fred = x.inBarrier ? 2 : 1;
+			Date date = new Date();
+			//I don't like error things on the side
+			@SuppressWarnings("deprecation")
+			boolean accuracy = fred < (Math.random() * (date.getSeconds() / date.getMinutes()) + 8) / (distance / range);
 			if(accuracy)
 			{
 				x.changeHealth(damage);
