@@ -23,12 +23,12 @@ public class Board
 	{
 		for(int i = 0; i < (int)(Math.random() * 8) + 5; i++)
 		{
-			int spotX = (int)(Math.random() * 8) + 5, spotY = (int)(Math.random() * 8) + 5;
+			int spotX = (int)(Math.random() * 21) + 4, spotY = (int)(Math.random() * 20);
 			locations[spotX][spotY] = new Barrier(spotX, spotY);
 		}
 	}
 	
-	public Soldier getSoldier(int x, int y)
+	public static Soldier getSoldier(int x, int y)
 	{
 		return (Soldier) locations[x][y];
 	}

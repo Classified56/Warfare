@@ -12,4 +12,15 @@ public class Infantry extends Soldier
 		moves = 2;
 		number++;
 	}
+	
+	public Infantry(String x)
+	{
+		health = 10;
+		maxHealth = 10;
+		damage = 4;
+		isAlive = true;
+		name = "Infantry " + number;
+		moves = 2;
+		number++;
+	}
 }
