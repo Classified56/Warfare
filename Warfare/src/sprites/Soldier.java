@@ -1,6 +1,5 @@
 package sprites;
 
-import board.*;
 import java.util.Date;
 
 /**

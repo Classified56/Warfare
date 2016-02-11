@@ -19,7 +19,7 @@ public class Infantry extends Soldier
 		maxHealth = 10;
 		damage = 4;
 		isAlive = true;
-		name = "Infantry " + number;
+		name = "Infantry " + number + ": " + x;
 		moves = 2;
 		number++;
 	}

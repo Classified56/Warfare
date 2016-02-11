@@ -32,4 +32,9 @@ public class Board
 	{
 		return (Soldier) locations[x][y];
 	}
+	
+	public static boolean isOccupied(int x, int y)
+	{
+		return locations[x][y].equals(null);
+	}
 }
