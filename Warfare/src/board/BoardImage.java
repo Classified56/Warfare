@@ -16,7 +16,7 @@ public class BoardImage
 	
 	public static void initializeFieldFrame()
 	{
-		fieldFrame.setSize(400, 100);
+		fieldFrame.setSize(600, 300);
 		fieldFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fieldFrame.setResizable(false);
 		fieldFrame.setLocationRelativeTo(null);
@@ -25,5 +25,11 @@ public class BoardImage
 	public static void makeVisible()
 	{
 		fieldFrame.setVisible(true);
+	}
+	
+	public static void drawGrid(Graphics graphics)
+	{
+		graphics.setColor(Color.black);
+    	graphics.drawLine(40, 30, 330, 380);
 	}
 }

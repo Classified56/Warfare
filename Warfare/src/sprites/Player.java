@@ -15,11 +15,36 @@ public class Player
 	
 	public int[][] getSoldierLocations()
 	{
-		int positions[][] = new int[5][2];
+		int positions[][] = new int[squad.size()][2];
 		for (int i = 0; i < positions.length; i++)
 		{
 			positions[i] = squad.get(i).getPosition();
 		}
 		return positions;
 	}
+	
+	
+	/**
+	 * 
+	 * @param x : the location number for the soldier
+	 * @return the soldier given
+	 */
+	public Soldier getSoldier(int x)
+	{
+		return squad.get(x);
+	}
+	
+	public Soldier getSoldier(String s)
+	{
+		for (int i = 0; i < squad.size(); i++)
+		{
+			if(squad.get(i).name.equals(s))
+			{
+				return squad.get(i);
+			}
+		}
+		return null;
+	}
+	
+	
 }

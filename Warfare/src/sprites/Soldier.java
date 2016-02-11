@@ -106,4 +106,10 @@ public abstract class Soldier extends Sprite
 			isAlive = false;
 		}
 	}
+	
+	@Override
+	public String toString()
+	{
+		return name;
+	}
 }
