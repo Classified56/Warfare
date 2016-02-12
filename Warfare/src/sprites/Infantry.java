@@ -23,4 +23,17 @@ public class Infantry extends Soldier
 		moves = 2;
 		number++;
 	}
+	
+	public Infantry(int x, int y)
+	{
+		health = 10;
+		maxHealth = 10;
+		damage = 4;
+		isAlive = true;
+		name = "Infantry " + number;
+		moves = 2;
+		position[0] = x;
+		position[1] = y;
+		number++;
+	}
 }

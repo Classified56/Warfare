@@ -110,6 +110,6 @@ public abstract class Soldier extends Sprite
 	@Override
 	public String toString()
 	{
-		return name;
+		return name + ": [Health: " + health +"][Position: " + position[0] + ", " + position[1] + "]";
 	}
 }
