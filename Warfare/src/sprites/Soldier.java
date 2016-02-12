@@ -1,5 +1,6 @@
 package sprites;
 
+import board.Board;
 /**
  * super class for all the different types of soldiers
  * 
@@ -41,6 +42,7 @@ public abstract class Soldier extends Sprite
 				y = 0;
 			position[0] = x;
 			position[1] = y;
+			inBarrier = Board.locations[x][y].barrier ? true : false;
 			System.out.println(name + " moved to position (" + x + ", " + y + ")");
 			moves--;
 		}

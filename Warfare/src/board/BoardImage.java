@@ -36,6 +36,14 @@ public class BoardImage extends Canvas
 			graphics.drawLine(i * 30, 0, i * 30, 900);
 		for(int i = 1; i < 30; i++)
 			graphics.drawLine(0, i * 30, 606, i * 30);
-		
+		graphics.setColor(Color.gray);
+		for(int i = 0; i < Board.locations.length; i++)
+		{
+			for(int j = 0; j < Board.locations[0].length; j++)
+			{
+				if(Board.locations[i][j].getBarrier())
+					graphics.drawRect(i * 30, i * 30, 30, 30);
+			}
+		}
 	}
 }

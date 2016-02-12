@@ -21,7 +21,7 @@ public class Board
 	
 	public static void generateBarriers()
 	{
-		for(int i = 0; i < (int)(Math.random() * 8) + 5; i++)
+		for(int i = 0; i < (int)(Math.random() * 8) + 12; i++)
 		{
 			int spotX = (int)(Math.random() * 21) + 4, spotY = (int)(Math.random() * 20);
 			locations[spotX][spotY] = new Barrier(spotX, spotY);
