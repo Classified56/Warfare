@@ -28,13 +28,8 @@ public class Board
 		}
 	}
 	
-	public static Soldier getSoldier(int x, int y)
-	{
-		return (Soldier) locations[x][y];
-	}
-	
 	public static boolean isOccupied(int x, int y)
 	{
-		return locations[x][y].equals(null);
+		return locations[x][y] != null;
 	}
 }

@@ -8,8 +8,11 @@ public class Infantry extends Soldier
 		maxHealth = 10;
 		damage = 4;
 		isAlive = true;
+		occupied = true;
+		inBarrier = false;
 		name = "Infantry " + number;
 		moves = 2;
+		range = 7;
 		number++;
 	}
 	
@@ -19,8 +22,11 @@ public class Infantry extends Soldier
 		maxHealth = 10;
 		damage = 4;
 		isAlive = true;
+		occupied = true;
+		inBarrier = false;
 		name = "Infantry " + number + ": " + x;
 		moves = 2;
+		range = 7;
 		number++;
 	}
 	
@@ -30,10 +36,13 @@ public class Infantry extends Soldier
 		maxHealth = 10;
 		damage = 4;
 		isAlive = true;
+		occupied = true;
+		inBarrier = false;
 		name = "Infantry " + number;
 		moves = 2;
 		position[0] = x;
 		position[1] = y;
+		range = 7;
 		number++;
 	}
 }

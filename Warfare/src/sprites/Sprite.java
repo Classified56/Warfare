@@ -10,9 +10,15 @@ public abstract class Sprite
 {
 	//first number is x coordinate, and second number is y coordinate
 	protected int position[] = new int[2];
+	protected boolean occupied = false;
 	
 	public int[] getPosition()
 	{
 		return position;
+	}
+	
+	public boolean getOccupied()
+	{
+		return occupied;
 	}
 }

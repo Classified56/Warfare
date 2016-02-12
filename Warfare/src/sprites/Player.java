@@ -9,7 +9,9 @@ public class Player
 	{
 		for (int i = 0; i < 5; i++)
 		{
-			squad.add(new Infantry());
+			int x = (int)(Math.random() * 30), y = (int)(Math.random() * 20);
+			if(!board.Board.isOccupied(x, y));
+				squad.add(new Infantry(x, y));
 		}
 	}
 	

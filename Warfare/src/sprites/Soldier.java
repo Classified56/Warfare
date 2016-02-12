@@ -1,7 +1,5 @@
 package sprites;
 
-import java.util.Date;
-
 /**
  * super class for all the different types of soldiers
  * 
@@ -57,8 +55,8 @@ public abstract class Soldier extends Sprite
 	
 	public void attack(Soldier x)
 	{
-		int x1 = x.getPosition()[0], y1 = x.getPosition()[0];
-		double distance = Math.hypot((double)x1 - (double)position[0], (double)y1 - (double)position[1]);
+		double x1 = x.getPosition()[0], y1 = x.getPosition()[1];
+		double distance = Math.hypot(Math.abs(x1 - (double)position[0]), Math.abs(y1 - (double)position[1]));
 		if(distance <= range && !x.inBarrier)
 		{
 			x.changeHealth(damage);
@@ -66,11 +64,8 @@ public abstract class Soldier extends Sprite
 		}
 		else
 		{
-			int fred = x.inBarrier ? 2 : 1;
-			Date date = new Date();
-			//I don't like error things on the side
-			@SuppressWarnings("deprecation")
-			boolean accuracy = fred < (Math.random() * (date.getSeconds() / date.getMinutes()) + 8) / (distance / range);
+			int fred = x.inBarrier ? 1 : 2;
+			boolean accuracy = (Math.random() * .5) + .56 < Math.pow(.92, (distance - range) / fred);
 			if(accuracy)
 			{
 				x.changeHealth(damage);
