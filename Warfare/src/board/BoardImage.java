@@ -51,7 +51,7 @@ public class BoardImage extends Canvas
 			for(int j = 0; j < Board.locations[0].length; j++)
 			{
 				if(Board.locations[i][j] != null && Board.locations[i][j].getBarrier())
-					graphics.drawRect(i * 30, i * 30, 30, 30);
+					graphics.drawRect(j * 30, i * 30, 30, 30);
 			}
 		}
 	}

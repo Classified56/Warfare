@@ -10,9 +10,10 @@ public class Player
 		for (int i = 0; i < 5; i++)
 		{
 			int x = (int)(Math.random() * 30), y = (int)(Math.random() * 20);
-			if(!board.Board.isOccupied(x, y));
+			if(board.Board.isEmpty(x, y));
 				squad.add(new Infantry(x, y));
 		}
+		Soldier.teamNumber++;
 	}
 	
 	public int[][] getSoldierLocations()
@@ -25,6 +26,17 @@ public class Player
 		return positions;
 	}
 	
+	public void updateDead()
+	{
+		for (int i = 0; i < squad.size(); i++)
+		{
+			if(!squad.get(i).isAlive)
+			{
+				squad.remove(i);
+				i--;
+			}
+		}
+	}
 	
 	/**
 	 * 

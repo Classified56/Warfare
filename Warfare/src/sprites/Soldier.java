@@ -21,13 +21,15 @@ public abstract class Soldier extends Sprite
 	protected boolean inBarrier;
 	protected boolean isAlive;
 	protected int range;
+	protected int team;
+	public static int teamNumber;
 	
 	/**
 	 * a move method for all soldiers
 	 * @param x 0-29
 	 * @param y 0-19
 	 */
-	protected void move(int x, int y)
+	protected boolean move(int x, int y)
 	{
 		//checks for valid moves from the objects current position
 		if((x < position[0] + 1 && x > position[0] - 1) && (y < position[1] + 1 && y > position[1] - 1))
@@ -40,14 +42,21 @@ public abstract class Soldier extends Sprite
 				y = 19;
 			else if(y < 0)
 				y = 0;
-			position[0] = x;
-			position[1] = y;
-			inBarrier = Board.locations[x][y].barrier ? true : false;
-			System.out.println(name + " moved to position (" + x + ", " + y + ")");
-			moves--;
+			if(Board.locations[x][y] == null || Board.locations[x][y].barrier)
+			{
+				position[0] = x;
+				position[1] = y;
+				inBarrier = Board.locations[x][y].barrier ? true : false;
+				System.out.println(name + " moved to position (" + x + ", " + y + ")");
+				moves--;
+				return true;
+			}
+			else
+				System.out.println("Spot occupied: [" + x + ", " + y + "]");
 		}
 		else
 			System.out.println("Invalid move for " + name);
+		return false;
 	}
 	
 	public void resetMoves()
@@ -76,6 +85,7 @@ public abstract class Soldier extends Sprite
 			else
 				System.out.println(name + " missed " + x.name);
 		}
+		moves = 0;
 		
 	}
 	

@@ -1,7 +1,7 @@
 package board;
 
+import function.WarfareRunner;
 import sprites.*;
-import java.util.Date;
 
 /**
  * object to contain all the sprites
@@ -22,23 +22,44 @@ public class Board
 	
 	public static void generateBarriers()
 	{
-		int stop = (int)(Math.random() * 12) + 12, i = 0;
-		while(i < stop)
+		for(int i = 4; i < 25; i++)
 		{
-			Date date = new Date();
-			@SuppressWarnings("deprecation")
-			double quotient = date.getSeconds();
-			int spotX = (int)(Math.random() * Math.random() * 21) + 4, spotY = (int)(Math.random() * Math.random() * 20);
-			if(locations[spotX][spotY] != null)
+			int stop = (int)(Math.random() * 3);
+			for(int x = 0; x < stop; x++);
 			{
-				locations[spotX][spotY] = new Barrier(spotX, spotY);
-				i++;
+				int spotY = (int)(Math.random() * 20);
+				if(locations[i][spotY] == null)
+					locations[i][spotY] = new Barrier(i, spotY);
+				
 			}
 		}
 	}
 	
-	public static boolean isOccupied(int x, int y)
+	public static boolean isEmpty(int x, int y)
 	{
-		return locations[x][y] != null;
+		return locations[x][y] == null;
+	}
+	
+	public static void updateSoldiers()
+	{
+		//remove soldiers
+		for (int i = 0; i < locations.length; i++)
+		{
+			for (int j = 0; j < locations[0].length; j++)
+			{
+				if(locations[i][j] != null && !locations[i][j].getBarrier())
+					locations[i][j] = null;
+			}
+		}
+		
+		//add soldiers
+		for (int i = 0; i < 2; i++)
+		{
+			int[][] spots = WarfareRunner.players[i].getSoldierLocations();
+			for (int j = 0; j < spots.length; j++)
+			{
+				locations[spots[j][0]][spots[j][1]] = WarfareRunner.players[i].getSoldier(j);
+			}
+		}
 	}
 }
