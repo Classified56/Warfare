@@ -1,6 +1,7 @@
 package board;
 
 import sprites.*;
+import java.util.Date;
 
 /**
  * object to contain all the sprites
@@ -21,10 +22,18 @@ public class Board
 	
 	public static void generateBarriers()
 	{
-		for(int i = 0; i < (int)(Math.random() * 8) + 12; i++)
+		int stop = (int)(Math.random() * 12) + 12, i = 0;
+		while(i < stop)
 		{
-			int spotX = (int)(Math.random() * 21) + 4, spotY = (int)(Math.random() * 20);
-			locations[spotX][spotY] = new Barrier(spotX, spotY);
+			Date date = new Date();
+			@SuppressWarnings("deprecation")
+			double quotient = date.getSeconds();
+			int spotX = (int)(Math.random() * Math.random() * 21) + 4, spotY = (int)(Math.random() * Math.random() * 20);
+			if(locations[spotX][spotY] != null)
+			{
+				locations[spotX][spotY] = new Barrier(spotX, spotY);
+				i++;
+			}
 		}
 	}
 	

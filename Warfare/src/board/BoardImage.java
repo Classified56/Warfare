@@ -2,7 +2,6 @@ package board;
 
 import java.awt.*;
 import javax.swing.*;
-import function.WarfareRunner;
 
 /**
  * creates the graphical image of the board
@@ -31,17 +30,27 @@ public class BoardImage extends Canvas
 	
 	public void paint(Graphics graphics)
 	{
+		drawGrid(graphics);
+		drawBarriers(graphics);
+	}
+	
+	private void drawGrid(Graphics graphics)
+	{
 		graphics.setColor(Color.white);
 		for(int i = 1; i < 20; i++)
 			graphics.drawLine(i * 30, 0, i * 30, 900);
 		for(int i = 1; i < 30; i++)
 			graphics.drawLine(0, i * 30, 606, i * 30);
-		graphics.setColor(Color.gray);
+	}
+	
+	private void drawBarriers(Graphics graphics)
+	{
+		graphics.setColor(Color.red);
 		for(int i = 0; i < Board.locations.length; i++)
 		{
 			for(int j = 0; j < Board.locations[0].length; j++)
 			{
-				if(Board.locations[i][j].getBarrier())
+				if(Board.locations[i][j] != null && Board.locations[i][j].getBarrier())
 					graphics.drawRect(i * 30, i * 30, 30, 30);
 			}
 		}
