@@ -45,4 +45,20 @@ public class Infantry extends Soldier
 		team = teamNumber;
 		number++;
 	}
+	
+	public Infantry(String s, int x, int y)
+	{
+		health = 10;
+		maxHealth = 10;
+		damage = 4;
+		isAlive = true;
+		inBarrier = false;
+		name = "Infantry " + number + ": " + x;
+		moves = 2;
+		position[0] = x;
+		position[1] = y;
+		range = 7;
+		team = teamNumber;
+		number++;
+	}
 }

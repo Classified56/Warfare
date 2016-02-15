@@ -24,7 +24,7 @@ public class Board
 	{
 		for(int i = 4; i < 25; i++)
 		{
-			int stop = (int)(Math.random() * 3);
+			int stop = (int)(Math.random() * 4);
 			for(int x = 0; x < stop; x++);
 			{
 				int spotY = (int)(Math.random() * 20);
@@ -57,9 +57,7 @@ public class Board
 		{
 			int[][] spots = WarfareRunner.players[i].getSoldierLocations();
 			for (int j = 0; j < spots.length; j++)
-			{
 				locations[spots[j][0]][spots[j][1]] = WarfareRunner.players[i].getSoldier(j);
-			}
 		}
 	}
 }

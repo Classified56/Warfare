@@ -10,11 +10,14 @@ public class WarfareRunner
 	{
 		BoardImage.initializeFieldFrame();
 		Board.generateBarriers();
+		Board.updateSoldiers();
 //		System.out.println(players[0].getSoldier(0) + " : " + players[1].getSoldier(0));
 //		players[0].getSoldier(0).attack(players[1].getSoldier(0));;
 		BoardImage.makeVisible();
 		
 		
 	}
+	
+	
 
 }

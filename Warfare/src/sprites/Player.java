@@ -7,13 +7,23 @@ public class Player
 	private ArrayList<Soldier> squad = new ArrayList<Soldier>();
 	public Player()
 	{
-		for (int i = 0; i < 5; i++)
+		if(Soldier.teamNumber == 0)
 		{
-			int x = (int)(Math.random() * 30), y = (int)(Math.random() * 20);
-			if(board.Board.isEmpty(x, y));
-				squad.add(new Infantry(x, y));
+			squad.add(new Infantry(3, 9));
+			squad.add(new Infantry(2, 8));
+			squad.add(new Infantry(2, 10));
+			squad.add(new Infantry(1, 7));
+			squad.add(new Infantry(1, 11));
+			Soldier.teamNumber++;
 		}
-		Soldier.teamNumber++;
+		else
+		{
+			squad.add(new Infantry(26, 9));
+			squad.add(new Infantry(27, 8));
+			squad.add(new Infantry(27, 10));
+			squad.add(new Infantry(28, 7));
+			squad.add(new Infantry(28, 11));
+		}
 	}
 	
 	public int[][] getSoldierLocations()
@@ -36,6 +46,17 @@ public class Player
 				i--;
 			}
 		}
+	}
+	
+	public int getSquadSize()
+	{
+		return squad.size();
+	}
+	
+	public void printBarrier()
+	{
+		for(int i = 0; i < squad.size(); i++)
+			System.out.println(squad.get(i).position[0] + ", " + squad.get(i).position[1]);
 	}
 	
 	/**

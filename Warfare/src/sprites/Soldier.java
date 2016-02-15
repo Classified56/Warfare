@@ -1,5 +1,7 @@
 package sprites;
 
+import javax.swing.JOptionPane;
+
 import board.Board;
 /**
  * super class for all the different types of soldiers
@@ -47,15 +49,15 @@ public abstract class Soldier extends Sprite
 				position[0] = x;
 				position[1] = y;
 				inBarrier = Board.locations[x][y].barrier ? true : false;
-				System.out.println(name + " moved to position (" + x + ", " + y + ")");
+				JOptionPane.showMessageDialog(null, name + " moved to position (" + x + ", " + y + ")");
 				moves--;
 				return true;
 			}
 			else
-				System.out.println("Spot occupied: [" + x + ", " + y + "]");
+				JOptionPane.showMessageDialog(null, "Spot occupied: [" + x + ", " + y + "]");
 		}
 		else
-			System.out.println("Invalid move for " + name);
+			JOptionPane.showMessageDialog(null, "Invalid move for " + name);
 		return false;
 	}
 	
@@ -71,7 +73,7 @@ public abstract class Soldier extends Sprite
 		if(distance <= range && !x.inBarrier)
 		{
 			x.changeHealth(damage);
-			System.out.println(x.name + " was hit. His health is " + x.health);
+			JOptionPane.showMessageDialog(null, x.name + " was hit. His health is " + x.health);
 		}
 		else
 		{
@@ -80,10 +82,10 @@ public abstract class Soldier extends Sprite
 			if(accuracy)
 			{
 				x.changeHealth(damage);
-				System.out.println(x.name + " was hit. His health is " + x.health);
+				JOptionPane.showMessageDialog(null, x.name + " was hit. His health is " + x.health);
 			}
 			else
-				System.out.println(name + " missed " + x.name);
+				JOptionPane.showMessageDialog(null, name + " missed " + x.name);
 		}
 		moves = 0;
 		
@@ -97,6 +99,16 @@ public abstract class Soldier extends Sprite
 	public boolean getLife()
 	{
 		return isAlive;
+	}
+	
+	public int getTeam()
+	{
+		return team;
+	}
+	
+	public void setInBarrier(boolean x)
+	{
+		inBarrier = x;
 	}
 	
 	/**
