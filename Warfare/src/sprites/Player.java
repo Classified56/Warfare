@@ -9,20 +9,20 @@ public class Player
 	{
 		if(Soldier.teamNumber == 0)
 		{
-			squad.add(new Infantry(3, 9));
-			squad.add(new Infantry(2, 8));
-			squad.add(new Infantry(2, 10));
-			squad.add(new Infantry(1, 7));
-			squad.add(new Infantry(1, 11));
+			squad.add(new Soldier(3, 9));
+			squad.add(new Soldier(2, 8));
+			squad.add(new Soldier(2, 10));
+			squad.add(new Soldier(1, 7));
+			squad.add(new Soldier(1, 11));
 			Soldier.teamNumber++;
 		}
 		else
 		{
-			squad.add(new Infantry(26, 9));
-			squad.add(new Infantry(27, 8));
-			squad.add(new Infantry(27, 10));
-			squad.add(new Infantry(28, 7));
-			squad.add(new Infantry(28, 11));
+			squad.add(new Soldier(26, 9));
+			squad.add(new Soldier(27, 8));
+			squad.add(new Soldier(27, 10));
+			squad.add(new Soldier(28, 7));
+			squad.add(new Soldier(28, 11));
 		}
 	}
 	
@@ -64,6 +64,16 @@ public class Player
 	 * @param x : the location number for the soldier
 	 * @return the soldier given
 	 */
+	public Soldier[] getSoldiers()
+	{
+		Soldier[] x = new Soldier[squad.size()];
+		for (int i = 0; i < squad.size(); i++)
+		{
+			x[i] = squad.get(i);
+		}
+		return x;
+	}
+	
 	public Soldier getSoldier(int x)
 	{
 		return squad.get(x);

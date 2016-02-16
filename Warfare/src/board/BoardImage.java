@@ -13,7 +13,7 @@ import function.WarfareRunner;
  */
 public class BoardImage extends Canvas
 {
-	public static final JFrame fieldFrame = new JFrame("Warfare: Battlefield");
+	private static final JFrame fieldFrame = new JFrame("Warfare: Battlefield");
 	private static final long serialVersionUID = 1L;
 	public static void initializeFieldFrame()
 	{
@@ -23,10 +23,6 @@ public class BoardImage extends Canvas
 		fieldFrame.getContentPane().add(image).setBackground(Color.black);
 		fieldFrame.setResizable(false);
 		fieldFrame.setLocationRelativeTo(null);
-	}
-	
-	public static void makeVisible()
-	{
 		fieldFrame.setVisible(true);
 	}
 	

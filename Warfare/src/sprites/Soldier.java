@@ -9,7 +9,7 @@ import board.Board;
  * @author Davis Ranney
  *
  */
-public abstract class Soldier extends Sprite
+public class Soldier extends Sprite
 {
 	public static int number;
 	protected int health;
@@ -31,10 +31,27 @@ public abstract class Soldier extends Sprite
 	 * @param x 0-29
 	 * @param y 0-19
 	 */
-	protected boolean move(int x, int y)
+	
+	public Soldier(int x, int y)
+	{
+		health = 10;
+		maxHealth = 10;
+		damage = 4;
+		isAlive = true;
+		inBarrier = false;
+		barrier = false;
+		name = "Soldier " + number;
+		moves = 2;
+		position[0] = x;
+		position[1] = y;
+		range = 7;
+		team = teamNumber;
+		number++;
+	}
+	public boolean move(int x, int y)
 	{
 		//checks for valid moves from the objects current position
-		if((x < position[0] + 1 && x > position[0] - 1) && (y < position[1] + 1 && y > position[1] - 1))
+		if((x <= position[0] + 1 && x >= position[0] - 1) && (y <= position[1] + 1 && y >= position[1] - 1))
 		{
 			if(x >= 30)
 				x = 29;
@@ -48,9 +65,10 @@ public abstract class Soldier extends Sprite
 			{
 				position[0] = x;
 				position[1] = y;
-				inBarrier = Board.locations[x][y].barrier ? true : false;
+				inBarrier = Board.locations[x][y] != null && Board.locations[x][y].barrier ? true : false;
 				JOptionPane.showMessageDialog(null, name + " moved to position (" + x + ", " + y + ")");
 				moves--;
+				Board.updateSoldiers();
 				return true;
 			}
 			else
@@ -106,9 +124,14 @@ public abstract class Soldier extends Sprite
 		return team;
 	}
 	
-	public void setInBarrier(boolean x)
+	public String getName()
 	{
-		inBarrier = x;
+		return name;
+	}
+	
+	public int getMoves()
+	{
+		return moves;
 	}
 	
 	/**
@@ -123,6 +146,7 @@ public abstract class Soldier extends Sprite
 		{
 			health = 0;
 			isAlive = false;
+			JOptionPane.showMessageDialog(null, name + " has died. ");
 		}
 	}
 	
