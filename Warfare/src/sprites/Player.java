@@ -25,6 +25,8 @@ public class Player
 			squad.add(new Soldier(27, 11));
 		}
 		Soldier.teamNumber++;
+		if(Soldier.number > 9)
+			Soldier.number = 0;
 		score = 0;
 	}
 	
