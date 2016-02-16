@@ -15,9 +15,11 @@ public class BoardImage extends Canvas
 {
 	private static final JFrame fieldFrame = new JFrame("Warfare: Battlefield");
 	private static final long serialVersionUID = 1L;
+	public static BoardImage image;
 	public static void initializeFieldFrame()
 	{
-		BoardImage image = new BoardImage();
+		fieldFrame.setVisible(false);
+		image = new BoardImage();
 		fieldFrame.setSize(606, 934);
 		fieldFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fieldFrame.getContentPane().add(image).setBackground(Color.black);
@@ -72,7 +74,13 @@ public class BoardImage extends Canvas
 			for(int j = 0; j < WarfareRunner.players[i].getSquadSize(); j++)
 			{
 				int[] spot = WarfareRunner.players[i].getSoldier(j).getPosition();
-				graphics.fillOval(spot[1] * 30, spot[0] * 30, 30, 30);;
+				graphics.fillOval(spot[1] * 30, spot[0] * 30, 30, 30);
+			}
+			for(int j = 0; j < WarfareRunner.players[i].getSquadSize(); j++)
+			{
+				int[] spot = WarfareRunner.players[i].getSoldier(j).getPosition();
+				graphics.setColor(Color.black);
+				graphics.drawString("" + WarfareRunner.players[i].getSoldier(j).getIDNumber(), (spot[1] * 30) + 12, (spot[0] * 30) + 18);
 			}
 			graphics.setColor(Color.red);
 		}

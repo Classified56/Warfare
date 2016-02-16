@@ -3,6 +3,8 @@ package sprites;
 import javax.swing.JOptionPane;
 
 import board.Board;
+import board.BoardImage;
+import function.WarfareRunner;
 /**
  * super class for all the different types of soldiers
  * 
@@ -12,18 +14,19 @@ import board.Board;
 public class Soldier extends Sprite
 {
 	public static int number;
-	protected int health;
-	protected int maxHealth;
-	protected String name;
-	//each object gets two moves per turn, except heavies, who get one
-	protected int moves;
+	public int idNumber;
+	private int health;
+	private int maxHealth;
+	private String name;
+	//each object gets two moves per turn
+	private int moves;
 	//damage done when object attacks
-	protected int damage;
+	private int damage;
 	//reduces damage take if true
-	protected boolean inBarrier;
-	protected boolean isAlive;
-	protected int range;
-	protected int team;
+	private boolean inBarrier;
+	private boolean isAlive;
+	private int range;
+	private int team;
 	public static int teamNumber;
 	
 	/**
@@ -41,6 +44,7 @@ public class Soldier extends Sprite
 		inBarrier = false;
 		barrier = false;
 		name = "Soldier " + number;
+		idNumber = number;
 		moves = 2;
 		position[0] = x;
 		position[1] = y;
@@ -48,6 +52,7 @@ public class Soldier extends Sprite
 		team = teamNumber;
 		number++;
 	}
+	
 	public boolean move(int x, int y)
 	{
 		//checks for valid moves from the objects current position
@@ -61,13 +66,13 @@ public class Soldier extends Sprite
 				y = 19;
 			else if(y < 0)
 				y = 0;
-			if(Board.locations[x][y] == null || Board.locations[x][y].barrier)
+			if(Board.field[x][y] == null)
 			{
+				moves--;
 				position[0] = x;
 				position[1] = y;
 				inBarrier = Board.locations[x][y] != null && Board.locations[x][y].barrier ? true : false;
-				JOptionPane.showMessageDialog(null, name + " moved to position (" + x + ", " + y + ")");
-				moves--;
+				JOptionPane.showMessageDialog(null, name + " moved to position (" + x + ", " + y + ") \nMoves Remaining: " + moves);
 				Board.updateSoldiers();
 				return true;
 			}
@@ -134,6 +139,22 @@ public class Soldier extends Sprite
 		return moves;
 	}
 	
+	public void setMoves(int x)
+	{
+		moves = x;
+	}
+	
+	public void sitTight()
+	{
+		JOptionPane.showMessageDialog(null, name + " is holding up.");
+		moves = 0;
+	}
+	
+	public int getIDNumber()
+	{
+		return idNumber;
+	}
+	
 	/**
 	 * @param x damage done, is negative if health pack is applied
 	 */
@@ -147,12 +168,16 @@ public class Soldier extends Sprite
 			health = 0;
 			isAlive = false;
 			JOptionPane.showMessageDialog(null, name + " has died. ");
+			WarfareRunner.players[0].updateDead();
+			WarfareRunner.players[1].updateDead();
+			Board.updateSoldiers();
+			BoardImage.initializeFieldFrame();
 		}
 	}
 	
 	@Override
 	public String toString()
 	{
-		return name + ": [Health: " + health +"][Position: " + position[0] + ", " + position[1] + "]";
+		return name + ": [Health: " + health +"]";
 	}
 }

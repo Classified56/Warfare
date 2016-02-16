@@ -9,20 +9,20 @@ public class Player
 	{
 		if(Soldier.teamNumber == 0)
 		{
-			squad.add(new Soldier(3, 9));
-			squad.add(new Soldier(2, 8));
-			squad.add(new Soldier(2, 10));
-			squad.add(new Soldier(1, 7));
-			squad.add(new Soldier(1, 11));
+			squad.add(new Soldier(14, 9));
+//			squad.add(new Soldier(13, 8));
+//			squad.add(new Soldier(13, 10));
+//			squad.add(new Soldier(12, 7));
+//			squad.add(new Soldier(12, 11));
 			Soldier.teamNumber++;
 		}
 		else
 		{
-			squad.add(new Soldier(26, 9));
-			squad.add(new Soldier(27, 8));
-			squad.add(new Soldier(27, 10));
-			squad.add(new Soldier(28, 7));
-			squad.add(new Soldier(28, 11));
+			squad.add(new Soldier(15, 9));
+//			squad.add(new Soldier(16, 8));
+//			squad.add(new Soldier(16, 10));
+//			squad.add(new Soldier(17, 7));
+//			squad.add(new Soldier(17, 11));
 		}
 	}
 	
@@ -40,7 +40,7 @@ public class Player
 	{
 		for (int i = 0; i < squad.size(); i++)
 		{
-			if(!squad.get(i).isAlive)
+			if(!squad.get(i).getLife())
 			{
 				squad.remove(i);
 				i--;
@@ -83,7 +83,7 @@ public class Player
 	{
 		for (int i = 0; i < squad.size(); i++)
 		{
-			if(squad.get(i).name.equals(s))
+			if(squad.get(i).getName().equals(s))
 			{
 				return squad.get(i);
 			}

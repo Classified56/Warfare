@@ -1,7 +1,8 @@
 package board;
 
-import function.WarfareRunner;
 import sprites.*;
+
+import function.WarfareRunner;
 
 /**
  * object to contain all the sprites
@@ -11,7 +12,8 @@ import sprites.*;
  */
 public class Board
 {
-	public static Sprite locations[][] = new Sprite[30][20];
+	public static Barrier locations[][] = new Barrier[30][20];
+	public static Soldier field[][] = new Soldier[30][20];
 	
 	/**
 	 * Creation of the battlefield. 
@@ -42,22 +44,20 @@ public class Board
 	
 	public static void updateSoldiers()
 	{
-		//remove soldiers
-		for (int i = 0; i < locations.length; i++)
+		for (int i = 0; i < field.length; i++)
 		{
-			for (int j = 0; j < locations[0].length; j++)
+			for (int j = 0; j < field[i].length; j++)
 			{
-				if(locations[i][j] != null && !locations[i][j].getBarrier())
-					locations[i][j] = null;
+				field[i][j] = null;
 			}
 		}
 		
-		//add soldiers
 		for (int i = 0; i < 2; i++)
 		{
-			int[][] spots = WarfareRunner.players[i].getSoldierLocations();
-			for (int j = 0; j < spots.length; j++)
-				locations[spots[j][0]][spots[j][1]] = WarfareRunner.players[i].getSoldier(j);
+			for (Soldier soldier : WarfareRunner.players[i].getSoldiers())
+			{
+				field[soldier.getPosition()[0]][soldier.getPosition()[1]] = soldier;
+			}
 		}
 	}
 }
