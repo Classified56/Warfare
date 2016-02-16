@@ -26,7 +26,6 @@ public class Soldier extends Sprite
 	private boolean inBarrier;
 	private boolean isAlive;
 	private int range;
-	private int team;
 	public static int teamNumber;
 	
 	/**
@@ -38,22 +37,37 @@ public class Soldier extends Sprite
 	public Soldier(int x, int y)
 	{
 		health = 10;
-		maxHealth = 10;
 		damage = 4;
 		isAlive = true;
 		inBarrier = false;
 		barrier = false;
 		name = "Soldier " + number;
 		idNumber = number;
-		moves = 2;
+		moves = 3;
 		position[0] = x;
 		position[1] = y;
-		range = 7;
-		team = teamNumber;
+		range = 8;
+		flag = false;
+		number++;
+	}
+	public Soldier(int x, int y, int h)
+	{
+		health = h;
+		damage = 4;
+		isAlive = true;
+		inBarrier = false;
+		barrier = false;
+		name = "Soldier " + number;
+		idNumber = number;
+		moves = 3;
+		position[0] = x;
+		position[1] = y;
+		range = 8;
+		flag = false;
 		number++;
 	}
 	
-	public boolean move(int x, int y)
+	public void move(int x, int y)
 	{
 		//checks for valid moves from the objects current position
 		if((x <= position[0] + 1 && x >= position[0] - 1) && (y <= position[1] + 1 && y >= position[1] - 1))
@@ -72,21 +86,33 @@ public class Soldier extends Sprite
 				position[0] = x;
 				position[1] = y;
 				inBarrier = Board.locations[x][y] != null && Board.locations[x][y].barrier ? true : false;
+				if(Board.locations[x][y] != null && Board.locations[x][y].flag)
+				{
+					if(WarfareRunner.players[0].getSoldier(name) != null)
+					{
+						WarfareRunner.players[0].setScore(WarfareRunner.players[0].getScore() + 1);
+						JOptionPane.showMessageDialog(null, name + " picked up a flag. Score: " + WarfareRunner.players[0].getScore());
+					}
+					else
+					{
+						WarfareRunner.players[1].setScore(WarfareRunner.players[1].getScore() + 1);
+						JOptionPane.showMessageDialog(null, name + " picked up a flag. Score: " + WarfareRunner.players[1].getScore());
+					}
+					Board.locations[x][y] = null;
+				}
 				JOptionPane.showMessageDialog(null, name + " moved to position (" + x + ", " + y + ") \nMoves Remaining: " + moves);
 				Board.updateSoldiers();
-				return true;
 			}
 			else
 				JOptionPane.showMessageDialog(null, "Spot occupied: [" + x + ", " + y + "]");
 		}
 		else
 			JOptionPane.showMessageDialog(null, "Invalid move for " + name);
-		return false;
 	}
 	
 	public void resetMoves()
 	{
-		moves = 2;
+		moves = 3;
 	}
 	
 	public void attack(Soldier x)
@@ -114,19 +140,14 @@ public class Soldier extends Sprite
 		
 	}
 	
-	public int getDamage()
+	public int getHealth()
 	{
-		return damage;
+		return health;
 	}
 	
 	public boolean getLife()
 	{
 		return isAlive;
-	}
-	
-	public int getTeam()
-	{
-		return team;
 	}
 	
 	public String getName()

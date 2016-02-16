@@ -1,0 +1,15 @@
+THE RULES
+---------
+1. Each player will start out with five soldiers, each with 10 health.
+2. Each soldier has a range of 8, in a circle reach.
+3. Each soldier does 4 damage if he hits another soldier.
+4. Accuracy is determined on an exponential scale. If a target is father away, it becomes much harder to hit him.
+5. Each soldier can move up to 3 times, but if he attacks or sits, his movement is over (even if he misses his shot).
+6. Barriers are spots surrounded by blue lines. Soldiers in barriers have half as likely chance of being shot.
+7. If a soldier's health goes to zero, he is dead and removed from the squad.
+8. Each player will play one at a time.
+9. In Team Death Match, each player will play until one squad is all dead.
+10. In Capture Flags, each player attempts to grab as many flags as possible. The squad with more flags or last alive wins. 
+11. In Alamo, the attacking team (Player 2) will have to siege the fortress and grab the flag, otherwise the defenders (Player 1) wins. If the defenders pick up the flag, they lose.
+12. Flags are the blue circles.
+13. THERE IS NO CRYING IN WARFARE!!!

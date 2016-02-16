@@ -7,5 +7,6 @@ public class Barrier extends Sprite
 		position[0] = x;
 		position[1] = y;
 		barrier = true;
+		flag = false;
 	}
 }

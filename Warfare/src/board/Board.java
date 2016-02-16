@@ -12,7 +12,7 @@ import function.WarfareRunner;
  */
 public class Board
 {
-	public static Barrier locations[][] = new Barrier[30][20];
+	public static Sprite locations[][] = new Sprite[30][20];
 	public static Soldier field[][] = new Soldier[30][20];
 	
 	/**
@@ -34,6 +34,33 @@ public class Board
 					locations[i][spotY] = new Barrier(i, spotY);
 				
 			}
+		}
+	}
+	
+	public static void generateAlamo()
+	{
+		for(int i = 0; i < 6; i++)
+		{
+			int y = i + 4;
+			locations[i][y] = new Barrier(i, y);
+		}
+		locations[1][9] = new Flag(1, 9);
+		for(int i = 5; i >= 0; i--)
+		{
+			int y = 14 - i;
+			locations[i][y] = new Barrier(i, y);
+		}
+	}
+	
+	public static void generateFlags()
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			int x = (int)(Math.random() * 21) + 4, y = (int)(Math.random() * 20);
+			if(locations[x][y] == null)
+				locations[x][y] = new Flag(x, y);
+			else
+				i--;
 		}
 	}
 	

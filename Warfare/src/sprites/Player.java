@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Player
 {
 	private ArrayList<Soldier> squad = new ArrayList<Soldier>();
+	private int score;
 	public Player()
 	{
-		if(Soldier.teamNumber == 0)
+		if(Soldier.teamNumber % 2 == 0)
 		{
 			squad.add(new Soldier(4, 9));
 			squad.add(new Soldier(3, 8));
 			squad.add(new Soldier(3, 10));
 			squad.add(new Soldier(2, 7));
 			squad.add(new Soldier(2, 11));
-			Soldier.teamNumber++;
 		}
 		else
 		{
@@ -23,6 +23,17 @@ public class Player
 			squad.add(new Soldier(26, 10));
 			squad.add(new Soldier(27, 7));
 			squad.add(new Soldier(27, 11));
+		}
+		Soldier.teamNumber++;
+		score = 0;
+	}
+	
+	public void setSoldierLocations(int[][] locations)
+	{
+		squad.removeAll(squad);
+		for (int i = 0; i < locations.length; i++)
+		{
+			squad.add(new Soldier(locations[i][0], locations[i][1], locations[i][2]));
 		}
 	}
 	
@@ -46,6 +57,16 @@ public class Player
 				i--;
 			}
 		}
+	}
+	
+	public int getScore()
+	{
+		return score;
+	}
+	
+	public void setScore(int x)
+	{
+		score = x;
 	}
 	
 	public int getSquadSize()

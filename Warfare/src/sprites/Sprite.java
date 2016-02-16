@@ -10,7 +10,12 @@ public abstract class Sprite
 {
 	//first number is x coordinate, and second number is y coordinate
 	protected int position[] = new int[2];
-	protected boolean barrier;
+	protected boolean barrier, flag;
+	
+	public boolean getFlag()
+	{
+		return flag;
+	}
 	
 	public boolean getBarrier()
 	{
