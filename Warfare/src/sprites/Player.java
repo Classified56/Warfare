@@ -9,20 +9,20 @@ public class Player
 	{
 		if(Soldier.teamNumber == 0)
 		{
-			squad.add(new Soldier(14, 9));
-//			squad.add(new Soldier(13, 8));
-//			squad.add(new Soldier(13, 10));
-//			squad.add(new Soldier(12, 7));
-//			squad.add(new Soldier(12, 11));
+			squad.add(new Soldier(4, 9));
+			squad.add(new Soldier(3, 8));
+			squad.add(new Soldier(3, 10));
+			squad.add(new Soldier(2, 7));
+			squad.add(new Soldier(2, 11));
 			Soldier.teamNumber++;
 		}
 		else
 		{
-			squad.add(new Soldier(15, 9));
-//			squad.add(new Soldier(16, 8));
-//			squad.add(new Soldier(16, 10));
-//			squad.add(new Soldier(17, 7));
-//			squad.add(new Soldier(17, 11));
+			squad.add(new Soldier(25, 9));
+			squad.add(new Soldier(26, 8));
+			squad.add(new Soldier(26, 10));
+			squad.add(new Soldier(27, 7));
+			squad.add(new Soldier(27, 11));
 		}
 	}
 	
