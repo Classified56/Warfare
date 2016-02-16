@@ -110,6 +110,7 @@ public class CommandWindow extends JFrame
 					game += "TD\n";
 					break;
 			}
+			player = i;
 			game += player + "\n";
 			game += "Barrier ";
 			for(int i = 0; i < 30; i++)
@@ -179,6 +180,7 @@ public class CommandWindow extends JFrame
 						break;
 				}
 				player = file.nextInt();
+				i = player == 0 ? 1 : 0;
 				file.nextLine();
 				Scanner line = new Scanner(file.nextLine());
 				line.next();
@@ -205,7 +207,7 @@ public class CommandWindow extends JFrame
 					{
 							file.next();
 							file.nextInt();
-							spots[a][2] = file.nextInt(); 
+							spots[a][2] = file.nextInt();
 							spots[a][0] = file.nextInt();
 							spots[a][1] = file.nextInt();
 					}
