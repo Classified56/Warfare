@@ -16,7 +16,7 @@ public class Soldier extends Sprite
 	public static int number;
 	public int idNumber;
 	private int health;
-	private int maxHealth;
+	private int maxHealth = 10;
 	private String name;
 	//each object gets two moves per turn
 	private int moves;
